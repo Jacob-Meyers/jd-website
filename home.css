@@ -1,0 +1,143 @@
+h1 {
+  color: lime;
+  font-size: 52px;
+  font-family: monospace;
+}
+
+body {
+  background-color: rgb(10, 10, 10);
+  color: white;
+  font-family: sans-serif;
+  margin-bottom: 60px; 
+}
+
+.titlebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 10px;
+  background-color: #111111;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  color: #fff;
+  padding: 15px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.cpbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 40px;
+  background-color: #000000;
+  padding: 40px;
+}
+
+.cpfield {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+cpHeader {
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  background-color: #111111;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid lime;
+}
+
+.nav-center {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: lime;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background-color: #111111;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-family: monospace;
+  transition: color 0.3s;
+}
+
+.dropdown-btn:hover {
+  color: lime;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #000000;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  border: 1px solid lime;
+  border-radius: 4px;
+  top: 100%;
+  margin-top: 10px;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-link {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: monospace;
+  transition: color 0.3s;
+}
+
+.dropdown-link:hover {
+  color: lime;
+  background-color: #333;
+}

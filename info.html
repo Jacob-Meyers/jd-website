@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeyers Development</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="icon" type="image/x-icon" href="/res/jdlogo.png">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<div class="titlebar">
+<h1>Info</h1>
+<h3>Just some basic info...</h3>
+</div>
+
+<div class="center">
+    <p>Jeyers Development right now only has one developer, Jacob Meyers.</p>
+    <p>CONTACT: <a href="jeyersdev@gmail.com" style="color: lime;">jeyersdev@gmail.com</a></p>
+</div>
+
+<footer>
+<div class="center">
+    <p style="font-size: 12px;">Made By Jeyers Development</p>
+    <p style="font-size: 12px;">CONTACT: <a href="jeyersdev@gmail.com" style="color: lime;">jeyersdev@gmail.com</a></p>
+</div>
+</footer>
+
+<script>
+  fetch('navbar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+
+      const dropdownBtn = document.querySelector(".dropdown-btn");
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+
+      if (dropdownBtn && dropdownMenu) {
+        dropdownBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          dropdownMenu.classList.toggle("show");
+        });
+
+        document.addEventListener("click", () => {
+          dropdownMenu.classList.remove("show");
+        });
+      }
+    })
+    .catch(err => console.error("Error loading the navbar: ", err));
+</script>
+
+</body>
+</html>
+

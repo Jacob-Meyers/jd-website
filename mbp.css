@@ -1,0 +1,261 @@
+h1 {
+  color: white;
+  font-size: 52px;
+  font-family: monospace;
+}
+
+body {
+  background-color: rgb(10, 10, 10);
+  color: white;
+  font-family: sans-serif;
+  margin-bottom: 60px; 
+}
+
+.titlebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  line-height: 30px;
+  background-color: #111111;
+  background-image: url('/res/mbp/mbpbkg.webp');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  color: #fff;
+  padding: 15px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.cpbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 40px;
+  background-color: #000000;
+  padding: 40px;
+}
+
+.cpfield {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+cpHeader {
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  background-color: #111111;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid lime;
+}
+
+.nav-center {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: lime;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background-color: #111111;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-family: monospace;
+  transition: color 0.3s;
+}
+
+.dropdown-btn:hover {
+  color: lime;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #000000;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  border: 1px solid lime;
+  border-radius: 4px;
+  top: 100%;
+  margin-top: 10px;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-link {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-family: monospace;
+  transition: color 0.3s;
+}
+
+.dropdown-link:hover {
+  color: lime;
+  background-color: #333;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Scroll snap container */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* Smooth iOS momentum scrolling */
+  scrollbar-width: none; /* Hide default scrollbar for Firefox */
+}
+
+/* Hide default scrollbar for Chrome, Safari, and Opera */
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Slide item configuration */
+.carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  scroll-snap-align: start;
+}
+
+/* Image containment rules */
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Absolute navigation overlays */
+.carousel-nav {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.nav-dot:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.gs-dropdown {
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  background-color: #000000;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 16px 0;
+  overflow: hidden;
+}
+
+.gs-dropdown summary {
+  list-style: none; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.gs-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.gs-dropdown summary::after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #5f6368;
+  border-bottom: 2px solid #5f6368;
+  transform: rotate(45deg); 
+  transition: transform 0.2s ease;
+  margin-left: 12px;
+}
+
+.gs-dropdown[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+.gs-dropdown-content {
+  padding: 0 24px 24px 24px;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 1.5;
+}

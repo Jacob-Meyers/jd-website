@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Bucket Project</title>
+    <link rel="stylesheet" href="mbp.css">
+    <link rel="icon" type="image/x-icon" href="/res/mbp/mbplogo.png">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<div class="titlebar">
+<h1>My Bucket Project</h1>
+<h4>PC Video-Game - <a href="/" style="color: white;">Created By Jeyers Development</a></h4>
+<p style="font-size: 25px; font-family: monospace; line-height: 35px; text-align: center;">Echo35 is a PvPvE Online Multiplayer FPS set in a near future where there is a threat on the battlefield.
+    Your mission is to eliminate the opposing forces on their vast home turf or in quickly performed close-quarters combat. 
+</p>
+<h2><a href="https://discord.gg/SbEvTFHW3a" target="_blank" style="color: magenta;">JOIN THE DISCORD</a></h2>
+</div>
+
+
+<div class="center" style="padding: 40px;">
+    <h1><a href="https://jeyers-development.itch.io/mbp" style="color: yellow;"><-_ Download For Windows_-></a></h1>
+    <h2>Latest Version: Av0.1.7</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/yTyDKDumLJ4?si=EyhkFUmQfuR2ObIw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<footer>
+<div class="center">
+    <p style="font-size: 12px;">Made By Jeyers Development</p>
+    <p style="font-size: 12px;">CONTACT: <a href="jeyersdev@gmail.com" style="color: lime;">jeyersdev@gmail.com</a></p>
+</div>
+</footer>
+
+<script>
+  fetch('navbar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+
+      const dropdownBtn = document.querySelector(".dropdown-btn");
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+
+      if (dropdownBtn && dropdownMenu) {
+        dropdownBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          dropdownMenu.classList.toggle("show");
+        });
+
+        document.addEventListener("click", () => {
+          dropdownMenu.classList.remove("show");
+        });
+      }
+    })
+    .catch(err => console.error("Error loading the navbar: ", err));
+</script>
+
+
+
+</body>
+</html>
+

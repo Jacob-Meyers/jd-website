@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeyers Development</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="icon" type="image/x-icon" href="/res/jdlogo.png">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<div class="titlebar">
+<h1>Jeyers Development</h1>
+<h3>Welcome To The Jeyers Development Website!</h3>
+<h2><a href="https://discord.gg/SbEvTFHW3a" target="_blank" style="color: magenta;">JOIN THE DISCORD</a></h2>
+</div>
+
+<div class="cpbar">
+<cpHeader>Current Projects</cpHeader>
+</div>
+
+<div class="cpfield">
+<img src="/res/echo35/header.jpg" height="200" alt="Header of Echo35 Game.">
+<div>
+<h2><a href="echo35.html" target="_blank" style="color: white;">Echo35</a></h2>
+<h4>Type: Video Game</h4>
+<h4>Stage: Private Alpha Testing</h4>
+</div>
+</div>
+
+<div class="cpfield" style="justify-content: right;">
+<div>
+<h2><a href="mbp.html" target="_blank" style="color: white;">My Bucket Project</a></h2>
+<h4>Type: Video Game</h4>
+<h4>Stage: Public Alpha</h4>
+</div>
+<img src="/res/mbp/header.png" width="500" alt="Header of My Bucket Project Game.">
+</div>
+
+
+<footer>
+<div class="center">
+    <p style="font-size: 12px;">Made By Jeyers Development</p>
+    <p style="font-size: 12px;">CONTACT: <a href="mailto:jeyersdev@gmail.com" style="color: lime;">jeyersdev@gmail.com</a></p>
+</div>
+</footer>
+
+<script>
+  fetch('navbar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+
+      const dropdownBtn = document.querySelector(".dropdown-btn");
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+
+      if (dropdownBtn && dropdownMenu) {
+        dropdownBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          dropdownMenu.classList.toggle("show");
+        });
+
+        document.addEventListener("click", () => {
+          dropdownMenu.classList.remove("show");
+        });
+      }
+    })
+    .catch(err => console.error("Error loading the navbar: ", err));
+</script>
+
+
+</body>
+</html>
+
