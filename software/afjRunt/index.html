@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>afjRunt</title>
+    <link rel="stylesheet" href="pg.css">
+    <link rel="icon" type="image/x-icon" href="/res/jdlogo.png">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<div class="titlebar">
+<h1>afjRunt</h1>
+<h4>Java Application - <a href="/" style="color: white;">Created By Jeyers Development</a></h4>
+<h2><a href="https://discord.gg/SbEvTFHW3a" target="_blank" style="color: magenta;">JOIN THE DISCORD</a></h2>
+</div>
+
+<h1>aleScript</h1>
+<h3>Programmed By Jacob Meyers on Java 21</h3>
+<h2>afjRunt allows you to rapidly search for ips with certain ports, designed for searching for Minecraft Servers to have "nice encounters" with them, but it also works for any kind of server.</h2>
+<h3>Requires Java!</h3>
+<h2><a href="https://github.com/Jeyers-Development/afjRunt/releases/">Download On Github</a></h2>
+<h2>Use Via Powershell:</h2>
+<h4>if(!(Test-Path -Path $env:LOCALAPPDATA\afjRunt)){New-Item -Path $env:LOCALAPPDATA\afjRunt -ItemType Directory}; irm "https://jeyers-development.github.io/afjRunt/afjRunt.jar" -OutFile $env:LOCALAPPDATA\afjRunt\afjRunt.jar; cd $env:LOCALAPPDATA\afjRunt; wt java -jar afjRunt.jar</h4>
+<h3>--OR--</h3>
+<h4>irm "https://jeyers-development.github.io/afjRunt/afjr.ps1" | iex</h4>
+
+<h2>Delete From System (IF YOU USED POWERSHELL):</h2>
+<h4>if(Test-Path -Path $env:LOCALAPPDATA\afjRunt){Get-ChildItem -path $env:LOCALAPPDATA\afjRunt -Recurse | Remove-Item -force -recurse}</h4>
+
+<h5>6/5/2025</h5>
+
+<footer>
+<div class="center">
+    <p style="font-size: 12px;">Made By Jeyers Development</p>
+    <p style="font-size: 12px;">CONTACT: <a href="jeyersdev@gmail.com" style="color: lime;">jeyersdev@gmail.com</a></p>
+</div>
+</footer>
+
+<script>
+  fetch('/navbar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').innerHTML = data;
+
+      const dropdownBtn = document.querySelector(".dropdown-btn");
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+
+      if (dropdownBtn && dropdownMenu) {
+        dropdownBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          dropdownMenu.classList.toggle("show");
+        });
+
+        document.addEventListener("click", () => {
+          dropdownMenu.classList.remove("show");
+        });
+      }
+    })
+    .catch(err => console.error("Error loading the navbar: ", err));
+</script>
+
+
+
+</body>
+</html>
+
