@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>exif420 v2 Docs</title>
+  <!-- GitHub Markdown CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css/github-markdown.css">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --fg: #c9d1d9;
+      --muted: #8b949e;
+      --border: #30363d;
+      --accent: #58a6ff;
+      --code-bg: #161b22;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    /* Layout */
+    .stackedit__left {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 280px;
+      overflow-y: auto;
+      background: #010409;
+      border-right: 1px solid var(--border);
+      padding: 20px;
+    }
+    .stackedit__right {
+      margin-left: 280px;
+    }
+    /* TOC styling */
+    .stackedit__toc a {
+      color: var(--fg);
+      text-decoration: none;
+      display: block;
+      padding: 4px 6px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+    .stackedit__toc li:not(.toc-h3) a {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .stackedit__toc .toc-h3 a {
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 13px;
+      padding-left: 16px;
+      border-left: 1px solid var(--border);
+    }
+    .stackedit__toc a:hover {
+      color: var(--accent);
+      background: rgba(88,166,255,0.15);
+    }
+    .stackedit__toc a.active {
+      color: var(--accent);
+      background: rgba(88,166,255,0.2);
+    }
+    /* Markdown body */
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+      background: var(--bg);
+      color: var(--fg);
+    }
+    .markdown-body pre,
+    .markdown-body code {
+      background: var(--code-bg);
+    }
+    .markdown-body a { color: var(--accent); }
+    .markdown-body hr { border-color: var(--border); }
+    .markdown-body table th,
+    .markdown-body table td { border-color: var(--border); }
+    @media (max-width: 900px) {
+      .stackedit__left {
+        position: relative;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .stackedit__right { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      <div class="toc">
+<ul>
+<li><a href="#jey-exif420-v2-documentation">JEY exif420 v2 Documentation</a><ul>
+<li><a href="#supported-metadata-exif-data">Supported Metadata &amp; EXIF Data</a></li>
+<li><a href="#exifdata-struct">ExifData Struct</a></li>
+<li><a href="#importing-the-image">Importing the Image</a></li>
+<li><a href="#extractexifdata-function">ExtractExifData() Function</a></li>
+</ul>
+</li>
+<li><a href="#support-the-project">Support The Project</a></li>
+<li><a href="#examples">Examples</a><ul>
+<li><a href="#example-usage-of-exif420printexifdataconst-exifdata-data">Example usage of exif420::PrintExifData(const ExifData&amp; data):</a></li>
+<li><a href="#example-usage-of-extracting-a-single-value-from-exifdata">Example usage of extracting a single value from ExifData:</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html markdown-body">
+      <h1 id="jey-exif420-v2-documentation">JEY exif420 v2 Documentation</h1>
+<h3 id="supported-metadata-exif-data">Supported Metadata &amp; EXIF Data</h3>
+<ul>
+<li>Camera make</li>
+<li>Camera model</li>
+<li>Software</li>
+<li>Date and time</li>
+<li>ISO</li>
+<li>F-number</li>
+<li>Exposure time</li>
+<li>Focal length</li>
+<li>Image dimensions</li>
+<li>Orientation</li>
+</ul>
+<h3 id="exifdata-struct">ExifData Struct</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">ExifData</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">dateTime</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">make</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">software</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">exposureTime</span><span class="p">;</span><span class="w"> </span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">fNumber</span><span class="p">;</span><span class="w">  </span>
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">iso</span><span class="p">;</span><span class="w">   </span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">focalLength</span><span class="p">;</span><span class="w">   </span>
+
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">orientation</span><span class="p">;</span><span class="w">  </span>
+<span class="p">};</span>
+</code></pre></div>
+
+<h2 id="importing-the-image">Importing the Image</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="s">&quot;my_photo.jpg&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">file</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;CRITICAL ERROR: Could not open file &#39;my_photo.jpg&#39;&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span><span class="n">s</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">file_bytes</span><span class="p">((</span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">file</span><span class="p">)),</span><span class="w"> </span>
+<span class="w">                                    </span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">());</span>
+</code></pre></div>
+
+<p>Use this or any other method to get the image file bytes into a std::vector<uint8_t>.
+In this example the image is loaded into a variable called file_bytes. To get the ExifData from this file use the ExtractExifData() function.</p>
+<h2 id="extractexifdata-function">ExtractExifData() Function</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">ExifData</span><span class="w"> </span><span class="nf">ExtractExifData</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">buf</span><span class="p">);</span>
+</code></pre></div>
+
+<p>You will use this function to extract the ExifData from the file bytes (std::vector<uint8_t>). It will return ExifData.</p>
+<h1 id="support-the-project">Support The Project</h1>
+<p>This project took a lot of work and thinking to get it working properly and effeciently. It would be greatly appreciated if you would consider supporting me via Ko-Fi</p>
+<p><a href="https://ko-fi.com/P5P21C0AIZ"><img alt="ko-fi" src="https://ko-fi.com/img/githubbutton_sm.svg" /></a></p>
+<h1 id="examples">Examples</h1>
+<h2 id="example-usage-of-exif420printexifdataconst-exifdata-data">Example usage of exif420::PrintExifData(const ExifData&amp; data):</h2>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;exif420.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="s">&quot;my_photo.jpg&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">file</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;CRITICAL ERROR: Could not open file &#39;my_photo.jpg&#39;&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">file_bytes</span><span class="p">((</span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">file</span><span class="p">)),</span><span class="w"> </span>
+<span class="w">                                     </span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">());</span>
+
+<span class="w">    </span><span class="n">exif420</span><span class="o">::</span><span class="n">ExifData</span><span class="w"> </span><span class="n">photo_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exif420</span><span class="o">::</span><span class="n">ExtractExifData</span><span class="p">(</span><span class="n">file_bytes</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">exif420</span><span class="o">::</span><span class="n">PrintExifData</span><span class="p">(</span><span class="n">photo_data</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>An example for an output would be:</p>
+<div class="codehilite"><pre><span></span><code>Make:         Canon
+Model:        Canon EOS 40D
+Software:     GIMP 2.4.5
+Date/Time:    2008:05:30 15:56:01
+ISO:          100
+F-Number:     f/7.1
+Exposure:     0.00625s
+Focal Length: 135mm
+Dimensions:   100x68
+</code></pre></div>
+
+<h2 id="example-usage-of-extracting-a-single-value-from-exifdata">Example usage of extracting a single value from ExifData:</h2>
+<div class="codehilite"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;exif420.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="s">&quot;my_photo.jpg&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">file</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;CRITICAL ERROR: Could not open file &#39;my_photo.jpg&#39;&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">file_bytes</span><span class="p">((</span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">file</span><span class="p">)),</span><span class="w"> </span>
+<span class="w">                                     </span><span class="n">std</span><span class="o">::</span><span class="n">istreambuf_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">());</span>
+
+<span class="w">    </span><span class="n">exif420</span><span class="o">::</span><span class="n">ExifData</span><span class="w"> </span><span class="n">photo_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exif420</span><span class="o">::</span><span class="n">ExtractExifData</span><span class="p">(</span><span class="n">file_bytes</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">photo_data</span><span class="p">.</span><span class="n">dateTime</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>An example for an output would be:</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">2008</span><span class="p">:</span><span class="mf">05</span><span class="p">:</span><span class="mf">30</span><span class="w"> </span><span class="mf">15</span><span class="p">:</span><span class="mf">56</span><span class="p">:</span><span class="mf">01</span>
+</code></pre></div>
+    </div>
+  </div>
+  <script>
+    const tocLinks = document.querySelectorAll('.stackedit__toc a');
+    tocLinks.forEach(a => {
+      const href = a.getAttribute('href');
+      if (href?.startsWith('#')) {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          tocLinks.forEach(link => link.classList.remove('active'));
+          a.classList.add('active');
+          const id = href.slice(1);
+          const target = document.getElementById(id);
+          if (target) {
+            const y = target.getBoundingClientRect().top + window.scrollY - 90;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
