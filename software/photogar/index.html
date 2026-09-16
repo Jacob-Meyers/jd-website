@@ -2,35 +2,116 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JD PhotoGar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JD PhotoGar | Automated RAW Photo Organizer</title>
     <link rel="stylesheet" href="pg.css">
     <link rel="icon" type="image/x-icon" href="/res/photogar/logo.png">
+
+    <style>
+        .titlebar .author-link { color: #ccc; text-decoration: none; }
+        .titlebar .tagline {
+            font-size: 24px;
+            font-family: monospace;
+            line-height: 1.4;
+            text-align: center;
+            margin: 20px 0;
+            color: #fff;
+        }
+
+        .content-padding {
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 26px;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: monospace;
+            text-decoration: none;
+            border-radius: 0px;
+            border: 3px solid #fff;
+            transition: none;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .btn-primary {
+            background-color: #00ff88;
+            color: #000;
+            border-color: #00ff88;
+            box-shadow: 4px 4px 0px #fff;
+        }
+        .btn-primary:hover {
+            background-color: #fff;
+            color: #000;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #00ff88;
+        }
+        .btn-secondary {
+            background-color: #000;
+            color: magenta;
+            border-color: magenta;
+            box-shadow: 4px 4px 0px magenta;
+        }
+        .btn-secondary:hover {
+            background-color: magenta;
+            color: #000;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #fff;
+        }
+        .price-tag {
+            display: block;
+            font-size: 11px;
+            font-weight: normal;
+            margin-top: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        footer p { font-size: 12px; margin: 5px 0; color: #888; }
+        footer a { color: lime; text-decoration: none; }
+    </style>
 </head>
 <body>
 
 <div id="navbar-placeholder"></div>
 
-<div class="titlebar">
-<h1>JD PhotoGar</h1>
-<h4>Software - <a href="/" style="color: white;">Created By Jeyers Development</a></h4>
-<p style="font-size: 25px; font-family: monospace; line-height: 35px; text-align: center;">
-  Simple and automated photo renamer and organizer.
-</p>
-<h2><a href="https://discord.gg/SbEvTFHW3a" target="_blank" style="color: magenta;">JOIN THE DISCORD</a></h2>
-</div>
+<header class="titlebar">
+    <h1>JD PhotoGar</h1>
+    <h4>Software by <a href="/" class="author-link">Jeyers Development</a></h4>
+    <p class="tagline">Stop wasting hours managing your RAW files.</p>
+</header>
 
+<main class="content-padding">
+    <p>Built for photographers who need to process massive file dumps fast. Whether you are dealing with thousands of .NEF files after a shoot or trying to clean up an existing messy archive, PhotoGar leverages deep EXIF metadata extraction to rename, sort, and structure your folders automatically.</p>
+    <p>Spend less time managing files in the terminal and more time actually editing.</p>
 
-<div class="center" style="padding: 40px;">
-  <p>PhotoGar is a software utility that allows thousands of RAW photography files to be renamed and organized automatically. This is an early version of PhotoGar and more updates and features will come shortly.</p>
-</div>
-
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://ko-fi.com/s/0336f81e32" data-iframely-url="https://iframely.net/ByMCZGNy?card=small&theme=dark"></a></div></div><script async src="https://iframely.net/embed.js"></script>
+    <div class="button-group">
+        <a href="https://ko-fi.com/s/0336f81e32" class="btn btn-primary">
+            Get PhotoGar <span class="price-tag">$9.99 • ONE-TIME</span>
+        </a>
+        <a href="https://discord.gg/SbEvTFHW3a" target="_blank" class="btn btn-secondary">
+            Join Our Discord<span class="price-tag">please :)</span>
+        </a>
+    </div>
+</main>
 
 <footer>
-<div class="center">
-    <p style="font-size: 12px;">Made By Jeyers Development</p>
-    <p style="font-size: 12px;">CONTACT: <a href="jeyersdev@gmail.com" style="color: lime;">jeyersdev@gmail.com</a></p>
-</div>
+    <div class="center" style="text-align: center; padding: 20px;">
+        <p>Made by Jeyers Development</p>
+        <p>Contact: <a href="mailto:jeyersdev@gmail.com">jeyersdev@gmail.com</a></p>
+    </div>
 </footer>
 
 <script>
@@ -56,8 +137,5 @@
     .catch(err => console.error("Error loading the navbar: ", err));
 </script>
 
-
-
 </body>
 </html>
-
